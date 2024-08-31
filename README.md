@@ -68,6 +68,41 @@ ip_geo_api=
 1. Create an account with the email `johndoe@hotmail.com` in Firebase Auth.
 2. Set the `/User/{id}` field in Firebase Realtime Database to match the Firebase Auth UID.
 
+### AndroidManifest Configuration
+
+In addition to the above setup, you will also need to make changes to the `AndroidManifest.xml` file in your Android project to ensure proper configuration. These changes might include:
+
+1. **Internet Permissions:**
+   - Ensure that your app has permission to access the internet:
+     ```xml
+     <uses-permission android:name="android.permission.INTERNET" />
+     ```
+
+2. **Access to Network State (Optional):**
+   - If you need to check network status, add:
+     ```xml
+     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+     ```
+
+3. **Firebase Services:**
+   - Make sure that Firebase services are correctly initialized by adding the following inside the `<application>` tag:
+     ```xml
+     <meta-data
+         android:name="com.google.firebase.messaging.default_notification_channel_id"
+         android:value="@string/default_notification_channel_id" />
+     <meta-data
+         android:name="com.google.firebase.analytics.APP_MEASUREMENT_EVENT_ID"
+         android:value="id" />
+     ```
+
+4. **Google Maps or Location Services (if used):**
+   - If your application uses Google Maps or location services:
+     ```xml
+     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+     <meta-data android:name="com.google.android.geo.API_KEY" android:value="TRANSLATE_API_KEY"/>
+     ```
+
 ### You're Ready to Go!
 
 ---
